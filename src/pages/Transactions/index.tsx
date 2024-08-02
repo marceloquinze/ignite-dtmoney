@@ -19,10 +19,19 @@ interface Transaction {
 export function Transactions() {
   const [transactions, setTransactions] = useState<Transaction[]>([])
 
+  // useEffect(() => {
+  //   fetch('http://localhost:3333/transactions')
+  //     .then((response) => response.json())
+  //     .then((data) => setTransactions(data))
+  // }, [])
+
   useEffect(() => {
-    fetch('http://localhost:3333/transactions')
-      .then((response) => response.json())
-      .then((data) => setTransactions(data))
+    async function loadTransactions() {
+      const response = await fetch('http://localhost:3333/transactions')
+      const data = await response.json()
+      setTransactions(data)
+    }
+    loadTransactions()
   }, [])
 
   return (
