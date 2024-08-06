@@ -50,7 +50,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     setTransactions(response.data)
   }, [])
 
-  // useCallback is used to prevent unnecessary re-renders
+  // useCallback is used to prevent unnecessary function re-renders
   // the dependency array is used to ensure that the function is only called when the query changes
   const createTransaction = useCallback(
     async (data: CreateTransactionInput) => {
